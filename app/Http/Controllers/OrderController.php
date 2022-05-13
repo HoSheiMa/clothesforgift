@@ -625,30 +625,47 @@ class OrderController extends Controller
         $role = Auth::user()->role;
         switch ($role) {
             case "admin":
-                $orders = Order::whereIn("status", $filters)->get();
+                if (empty($request->size)) {
+                    $orders = Order::whereIn("status", $filters)->get();
+                } else {
+                    $orders = Order::whereIn("status", $filters)->get(["id"]);
+                }
                 break;
             case "support":
-                $orders = Order::whereIn("status", $filters)->get();
-
+                if (empty($request->size)) {
+                    $orders = Order::whereIn("status", $filters)->get();
+                } else {
+                    $orders = Order::whereIn("status", $filters)->get(["id"]);
+                }
                 break;
             case "pagesCoordinator":
-                $orders = Order::whereIn("status", $filters)->get();
+                if (empty($request->size)) {
+                    $orders = Order::whereIn("status", $filters)->get();
+                } else {
+                    $orders = Order::whereIn("status", $filters)->get(["id"]);
+                }
 
                 break;
             case "leader":
                 $leader_members = User::where(
                     "leader_id",
                     Auth::user()->id
-                )->get();
+                )->get(["id"]);
                 $leader_members_ids = [];
                 foreach ($leader_members as $key => $value) {
                     array_push($leader_members_ids, $value->id);
                 }
                 // add leader id also
                 array_push($leader_members_ids, Auth::user()->id);
-                $orders = Order::whereIn("created_by", $leader_members_ids)
-                    ->whereIn("status", $filters)
-                    ->get();
+                if (empty($request->size)) {
+                    $orders = Order::whereIn("created_by", $leader_members_ids)
+                        ->whereIn("status", $filters)
+                        ->get();
+                } else {
+                    $orders = Order::whereIn("created_by", $leader_members_ids)
+                        ->whereIn("status", $filters)
+                        ->get(["id"]);
+                }
                 break;
             case "marketer":
                 $hasLeader = Auth::user()->leader_id;
@@ -657,14 +674,49 @@ class OrderController extends Controller
                     $leader_members = User::where(
                         "leader_id",
                         Auth::user()->leader_id
-                    )->get();
+                    )->get("id");
                     $leader_members_ids = [];
                     foreach ($leader_members as $key => $value) {
                         array_push($leader_members_ids, $value->id);
                     }
                     // add leader id also
                     array_push($leader_members_ids, Auth::user()->id);
-                    $orders = Order::whereIn("created_by", $leader_members_ids)
+                    if (empty($request->size)) {
+                        $orders = Order::whereIn(
+                            "created_by",
+                            $leader_members_ids
+                        )
+                            ->whereIn("status", $filters)
+                            ->get();
+                    } else {
+                        $orders = Order::whereIn(
+                            "created_by",
+                            $leader_members_ids
+                        )
+                            ->whereIn("status", $filters)
+                            ->get(["id"]);
+                    }
+                } else {
+                    if (empty($request->size)) {
+                        $orders = Order::where([
+                            ["created_by", "=", Auth::user()->id],
+                        ])
+                            ->whereIn("status", $filters)
+                            ->get();
+                    } else {
+                        $orders = Order::where([
+                            ["created_by", "=", Auth::user()->id],
+                        ])
+                            ->whereIn("status", $filters)
+                            ->get(["id"]);
+                    }
+                }
+                break;
+            case "seller":
+                if (empty($request->size)) {
+                    $orders = Order::where([
+                        ["created_by", "=", Auth::user()->id],
+                    ])
                         ->whereIn("status", $filters)
                         ->get();
                 } else {
@@ -672,48 +724,55 @@ class OrderController extends Controller
                         ["created_by", "=", Auth::user()->id],
                     ])
                         ->whereIn("status", $filters)
-                        ->get();
+                        ->get(["id"]);
                 }
                 break;
-            case "seller":
-                $orders = Order::where([["created_by", "=", Auth::user()->id]])
-                    ->whereIn("status", $filters)
-                    ->get();
-                break;
             case "Shippingcompany":
-                $orders = Order::where([
-                    ["Shipping_company", "=", Auth::user()->id],
-                ])
-                    ->whereIn("status", $filters)
-                    ->get();
+                if (empty($request->size)) {
+                    $orders = Order::where([
+                        ["Shipping_company", "=", Auth::user()->id],
+                    ])
+                        ->whereIn("status", $filters)
+                        ->get();
+                } else {
+                    $orders = Order::where([
+                        ["Shipping_company", "=", Auth::user()->id],
+                    ])
+                        ->whereIn("status", $filters)
+                        ->get(["id"]);
+                }
                 break;
         }
-        foreach ($orders as $key => $order) {
-            $order->items = $order->items;
-            $order->Shipping_to = $order->Shipping_location;
-            $order->total = 0;
-            $order->totalWithoutShipping = 0;
-            foreach ($order->items as $key => $item) {
-                $order->total += $item->needed_price * $item->needed;
-                $order->totalWithoutShipping +=
-                    $item->needed_price * $item->needed;
+        if (empty($request->size)) {
+            foreach ($orders as $key => $order) {
+                $order->items = $order->items;
+                $order->Shipping_to = $order->Shipping_location;
+                $order->total = 0;
+                $order->totalWithoutShipping = 0;
+                foreach ($order->items as $key => $item) {
+                    $order->total += $item->needed_price * $item->needed;
+                    $order->totalWithoutShipping +=
+                        $item->needed_price * $item->needed;
+                }
+                $order->Shipping_company = $order->Shipping_company
+                    ? (User::find($order->Shipping_company)
+                        ? User::find($order->Shipping_company)
+                        : "لا يوجد اسم")
+                    : $order->Shipping_company;
+                $_id = (int) $order->created_by;
+                $order->created_by = User::find($_id)
+                    ? User::find($_id)->name
+                    : "";
+                $order->updated_by_name = User::find($order->updated_by)
+                    ? User::find($order->updated_by)->name
+                    : "";
+                $order->created_by_email = User::find($_id)
+                    ? User::find($_id)->email
+                    : "";
+                $order->created_id = $_id;
+                $order->total += $order->Shipping_fees;
+                $order->role = Auth::user()->role;
             }
-            $order->Shipping_company = $order->Shipping_company
-                ? (User::find($order->Shipping_company)
-                    ? User::find($order->Shipping_company)
-                    : "لا يوجد اسم")
-                : $order->Shipping_company;
-            $_id = (int) $order->created_by;
-            $order->created_by = User::find($_id) ? User::find($_id)->name : "";
-            $order->updated_by_name = User::find($order->updated_by)
-                ? User::find($order->updated_by)->name
-                : "";
-            $order->created_by_email = User::find($_id)
-                ? User::find($_id)->email
-                : "";
-            $order->created_id = $_id;
-            $order->total += $order->Shipping_fees;
-            $order->role = Auth::user()->role;
         }
         return [
             "data" => $orders,

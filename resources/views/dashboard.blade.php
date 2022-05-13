@@ -209,7 +209,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'new')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'new')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     طلبات جديدة
 
@@ -228,7 +228,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'pending')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'pending')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     طلبات معلقة
                                     </p>
@@ -245,7 +245,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'confirmed')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'confirmed')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     طلبات مؤكدة
 
@@ -261,7 +261,7 @@
                                     طلبات قيد التوصيل                                </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'delivery')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'delivery')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     طلبات قيد التوصيل                                    </p>
                             </div>
@@ -278,7 +278,7 @@
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'delivered')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'delivered')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     تم التوصيل
 
@@ -294,7 +294,7 @@
                                     طلبات ملغية                                </h3>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'cancelled')->get())}}</h4>
+                                <h4 class="card-title text-primary">{{sizeof(Order::where('status', 'cancelled')->get(['id']))}}</h4>
                                 <p class="card-text">
                                     طلبات ملغية                                    </p>
                             </div>

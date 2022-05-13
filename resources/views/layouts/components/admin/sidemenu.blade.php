@@ -80,6 +80,7 @@
                             @php
                             $r = new Illuminate\Http\Request();
                             $r->filter = '1';
+                            $r->size = true;
                             $data = App\Http\Controllers\OrderController::orders($r)['data'];
                             @endphp
                             <span class="badge bg-warning text-dark">
@@ -115,6 +116,8 @@
                             @php
                             $r = new Illuminate\Http\Request();
                             $r->filter = $status;
+                            $r->size = true;
+
                             $data = App\Http\Controllers\OrderController::orders($r)['data'];
                             @endphp
                             <span class="badge bg-warning text-dark">
