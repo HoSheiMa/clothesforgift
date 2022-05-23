@@ -1,22 +1,4 @@
-اضافة عضو التنبيهات تكون بالعربي
-تعديل
-
-
- ----------------------------------------------------
-شغل جديد
-ارسال رسالة واتس
- و تم التسليم و الرسايل علي قيد التوصيل و تم الطلب
-ارسال رسالة واتس اكتر من اورد في نفس الوقت
-
-
-normal message !done
-auto message with status !done
-(800) 50$
-invoice message with new invoice (create invoice) 20$ !done
-can change messages of each auto message 10$ !done
-advance export 20$
-leader can take bonnux from under marktors !done
-
-120$
-1,885 EGP
-toke 300
+اضافه العنوان الي الجداول
+نقل الشحن الي قبل العنوان في السله 
+تصدير المتقدم اضافه فلتر الحاله 
+تصدير بارقام البواليس او بارقام التلفونات

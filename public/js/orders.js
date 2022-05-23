@@ -201,7 +201,7 @@ window.onload = async () => {
                     }
                     if (
                         window.user.role == "admin" ||
-                        window.user.role == "support"
+                        window.user.role == "support" 
                     ) {
                         whatsapp_btn = `
                     <a onclick="whatsapp_msg(${d.id})" class=col target=_blank>
@@ -212,7 +212,9 @@ window.onload = async () => {
                     if (
                         window.user.role == "admin" ||
                         window.user.role == "support" ||
-                        window.user.id == d.created_id
+                        window.user.id == d.created_id || 
+                        window.user.role == "pagesCoordinator"
+
                     ) {
                         edit_btn = `
                         <a href="/order/${d.id}/edit" class=col target=_blank>

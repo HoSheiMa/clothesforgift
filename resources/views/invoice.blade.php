@@ -135,11 +135,17 @@
                             <h6 class="text-muted">الملاحظات</h6>
 
                             <pre class="text-muted" style='direction: rtl;white-space: break-spaces;
-                            unicode-bidi: embed;'>{{
-                                sizeof($order->notes) > 0 ?
-                                ($order->notes[sizeof($order->notes )- 1])->note  :
-                                $order->note ? $order->note : 'لا يوجد ملاحظات'
-                            }}</pre>
+                            unicode-bidi: embed;'>
+                                @php
+                                $notes =  ($order->notes);
+                               
+                                if (sizeof($notes) > 0){
+                                    echo ($notes[sizeof($notes) - 1])->note;
+                                } else {
+                                    $order->note ? $order->note : 'لا يوجد ملاحظات';
+                                }
+                                @endphp
+                                </pre>
                         </div>
                     </div> <!-- end col -->
                     <div class="col-6">

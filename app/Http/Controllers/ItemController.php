@@ -140,12 +140,12 @@ class ItemController extends Controller
                     "available" => +$color->available + $back_items_qauntity,
                 ]);
             }
-            $item->delete();
+            // $item->delete();
             // delete the order if there no items
-            $items = $order->items;
-            if (sizeof($items) === 0) {
-                $order->delete();
-            }
+            // $items = $order->items;
+            // if (sizeof($items) === 0) {
+            //     $order->delete();
+            // }
         }
     }
 }
