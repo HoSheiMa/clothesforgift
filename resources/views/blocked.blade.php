@@ -20,19 +20,8 @@
 
                                     <div class="card-body p-4">
 
-                                        <div class="auth-logo">
-                                            <a href="index.html" class="logo logo-dark text-center">
-                                                <span class="logo-lg">
-                                                    <img src="../assets/images/logo-dark.png" alt="" height="22">
-                                                </span>
-                                            </a>
-
-                                            <a href="index.html" class="logo logo-light text-center">
-                                                <span class="logo-lg">
-                                                    <img src="../assets/images/logo-light.png" alt="" height="22">
-                                                </span>
-                                            </a>
-                                        </div>
+                                            <h3 style="    text-align: center;
+                                            ">SMSCLOTHES</h3>
 
                                         <div class="text-center mt-4">
                                             <h1 class="text-error">500</h1>

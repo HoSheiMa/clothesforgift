@@ -86,7 +86,7 @@ window.onload = async () => {
             if (user.leader_ratio) {
                 leader_ratio = Number(user.leader_ratio);
             }
-            benefit = benefit * (user.leader_ratio / 100);
+            benefit = benefit * ((100 - leader_ratio) / 100);
         }
 
         $total.text(+total + +$ShippingPrice + ".00");

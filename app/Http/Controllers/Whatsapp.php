@@ -105,6 +105,16 @@ class Whatsapp extends Controller
             "document"
         );
     }
+    public function send_file($file_name, $document_url)
+    {
+        return $this->send_execute(
+            [
+                "filename" => $file_name,
+                "document" => $document_url,
+            ],
+            "document"
+        );
+    }
     public function send_message($message_body)
     {
         return $this->send_execute(

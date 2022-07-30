@@ -16,6 +16,7 @@ use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\StatusActionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Whatsapp;
+use App\Http\Controllers\whatsappSender;
 use App\Http\Controllers\WithdrawController;
 use App\Models\Chat;
 use App\Models\Item;
@@ -254,6 +255,14 @@ Route::middleware(["auth"])->group(function () {
         WithdrawController::class,
         "update",
     ]);
+    //whatsapp_sender
+    Route::get("/whatsapp_sender", [whatsappSender::class, "index"])->middleware(
+        "isAdmin"
+    );
+    Route::post("/whatsapp_sender", [whatsappSender::class, "send"])->middleware(
+        "isAdmin"
+    );
+    
     // bonus
     Route::get("/bones", [BonesController::class, "index"]);
     Route::post("/bones", [BonesController::class, "create"])->middleware(
@@ -280,7 +289,15 @@ Route::middleware(["auth"])->group(function () {
         export::class,
         "advance_export_orders",
     ])->middleware("isAdmin");
-
+    Route::post("/export/status", [
+        export::class,
+        "advance_export_orders_by_type",
+    ])->middleware("isAdmin");
+    Route::post("/export/file", [
+        export::class,
+        "advance_export_orders_by_file",
+    ])->middleware("isAdmin");
+    
     // profile
     Route::get("profile/{user}", function ($user) {
         $user = User::find($user);

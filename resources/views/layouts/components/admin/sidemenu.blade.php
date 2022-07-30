@@ -157,8 +157,6 @@
 
         </li>
         @endif
-        @if (!is('support'))
-
         <li>
             <a href="#sidebarEcommerce4" data-bs-toggle="collapse">
                 <i class="fas fa-dollar-sign"></i>                <span> طلبات السحب </span>
@@ -185,8 +183,6 @@
             </ul>
         </div>
         </li>
-        @endif
-
         @if (is('admin'))
 
         <li class="menu-title mt-2">أخري</li>
@@ -233,6 +229,16 @@
             <a href="/export">
                 <i class="fa-solid fa-file-export"></i>
                 <span> التصدير المتقدم </span>
+            </a>
+        </li>
+        
+        @endif
+
+        @if(is('admin', 'support', 'pagesCoordinator'))
+        <li>
+            <a href="/whatsapp_sender">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span> رسائل واتساب </span>
             </a>
         </li>
         @endif

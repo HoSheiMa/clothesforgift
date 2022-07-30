@@ -155,7 +155,7 @@ window.onload = async () => {
                 if (user.leader_ratio) {
                     leader_ratio = Number(user.leader_ratio);
                 }
-                bonus = bonus * (user.leader_ratio / 100);
+                bonus = bonus * ((100 - leader_ratio) / 100);
             }
             if (bonus < 0) {
                 bonus = 0;

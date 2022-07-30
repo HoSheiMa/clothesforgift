@@ -128,10 +128,11 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public static function destroy(Request $request, Item $item)
+    public static function destroy(Request $request, Item $item, $delete_item = true)
     {
         $role = Auth::user()->role;
-        if ($role === "admin" || $role === "support") {
+        $order = Order::find($item->order_id);
+        if ($role === "admin" || $role === "support" || (Auth::user()->id == $order->created_by && $order->status == "new"))  {
             $back_items_qauntity = $item->needed;
             $color = colors::find($item->color_id);
             $order = Order::find($item->order_id);
@@ -140,12 +141,14 @@ class ItemController extends Controller
                     "available" => +$color->available + $back_items_qauntity,
                 ]);
             }
-            // $item->delete();
+            if ($delete_item) {
+            $item->delete();
             // delete the order if there no items
-            // $items = $order->items;
-            // if (sizeof($items) === 0) {
-            //     $order->delete();
-            // }
+            $items = $order->items;
+            if (sizeof($items) === 0) {
+                $order->delete();
+            }
+        }
         }
     }
 }

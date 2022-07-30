@@ -119,7 +119,7 @@
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputZip">الكمية</label>
-                  <input value='{{$pc->available}}' required name="items-available[]" type="number" min="1" max="10000" class="form-control" id="inputZip">
+                  <input value='{{$pc->available}}' required name="items-available[]" type="number" max="10000" class="form-control" id="inputZip">
                 </div>
                 <button class="btn btn-danger mt-1" onclick="$(this).parent().remove()"}>delete</button>
               </div>

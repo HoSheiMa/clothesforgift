@@ -1,4 +1,7 @@
+
 window.onload = async () => {
+    $.fn.dataTable.ext.errMode = 'none';
+
     let user = await fetch("getUser", {
         headers: {
             accept: "application/json",
@@ -61,6 +64,12 @@ window.onload = async () => {
             },
             {
                 data: "Shipping_to",
+            },
+            {
+                data: "address",
+                render: (address) => {
+                    return JSON.parse(address).join(", ");
+                },
             },
 
             {
@@ -128,7 +137,7 @@ window.onload = async () => {
                 data: "Shipping_company",
                 render: (company) => {
                     if (company) {
-                        return company.name;
+                        return company;
                     } else {
                         return "لا يوجد";
                     }

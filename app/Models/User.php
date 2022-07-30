@@ -27,7 +27,7 @@ class User extends Authenticatable
     protected $hidden = ["password", "remember_token"];
     public function leader()
     {
-        return $this->hasOne(User::class, "leader_id");
+        return $this->hasOne(User::class, 'id', "leader_id");
     }
     /**
      * The attributes that should be cast.

@@ -95,14 +95,7 @@
                                                     </div>
                                                 </div>
                                                 <form action="">
-                                                <div class="mb-3">
-                                                    <label for="example-select" class="form-label">الشحن الي</label>
-                                                    <select onchange="updateInvoice()" id="Shipping-dropdown" name="Shipping_to"class="form-select" >
-                                                        @foreach ($Shippings as $Shipping)
-                                                            <option price="{{ $Shipping->{$role} }}" value="{{$Shipping->id}}">{{$Shipping->location}} - {{ $Shipping->{$role} }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                           
                                                 <div class="mt-3">
                                                     <label for="example-textarea" class="form-label">الاسم:</label>
                                                     <input name="name" class="form-control" id="example-textarea" rows="3" placeholder="" />
@@ -130,6 +123,14 @@
 
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="mb-3 mt-2">
+                                                    <label for="example-select" class="form-label">الشحن الي</label>
+                                                    <select onchange="updateInvoice()" id="Shipping-dropdown" name="Shipping_to"class="form-select" >
+                                                        @foreach ($Shippings as $Shipping)
+                                                            <option price="{{ $Shipping->{$role} }}" value="{{$Shipping->id}}">{{$Shipping->location}} - {{ $Shipping->{$role} }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="mt-3">
                                                     <label for="example-textarea" class="form-label">رقم الهاتف:</label>
