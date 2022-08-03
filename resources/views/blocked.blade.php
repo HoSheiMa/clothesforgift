@@ -21,7 +21,7 @@
                                     <div class="card-body p-4">
 
                                             <h3 style="    text-align: center;
-                                            ">SMSCLOTHES</h3>
+                                            ">clothesforgift</h3>
 
                                         <div class="text-center mt-4">
                                             <h1 class="text-error">500</h1>

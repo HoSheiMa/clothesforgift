@@ -5,10 +5,10 @@
  */
 
 /**
- * Database `smsclothes`
+ * Database `clothesforgift`
  */
 
-/* `smsclothes`.`messages` */
+/* `clothesforgift`.`messages` */
 $messages = array(
   array('id' => '1','from' => '1','name' => 'default name','message' => 'msg 2','chat_id' => '1','created_at' => '2021-11-26 04:13:31','updated_at' => NULL),
   array('id' => '2','from' => '2','name' => 'default name','message' => 'msg 1','chat_id' => '1','created_at' => '2021-11-26 04:13:31','updated_at' => NULL),

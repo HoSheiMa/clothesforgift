@@ -94,11 +94,11 @@
         <div class="logo-box">
             <a href="/dashboard" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <h2 class="text-white">SMSCLOTHES</h2>
+                    <h2 class="text-white">clothesforgift</h2>
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <h2>SMSCLOTHES</h2>
+                    <h2>clothesforgift</h2>
 
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
@@ -106,11 +106,11 @@
 
             <a href="/" class="logo logo-light text-center">
                 <span class="logo-sm m-auto">
-                    <h2 class="text-white">SC</h2>
+                    <h2 class="text-white">CG</h2>
 
                 </span>
                 <span class="logo-lg">
-                    <h2 class="text-white">SMSCLOTHES</h2>
+                    <h2 class="text-white">clothesforgift</h2>
 
                 </span>
             </a>

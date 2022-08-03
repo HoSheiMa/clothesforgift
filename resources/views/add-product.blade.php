@@ -129,7 +129,7 @@
                         <script>
                             document.write(new Date().getFullYear())
 
-                        </script> &copy; Powered by SMSCLOTHES
+                        </script> &copy; Powered by clothesforgift
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-end footer-links d-none d-sm-block">

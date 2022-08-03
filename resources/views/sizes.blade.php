@@ -55,7 +55,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; Powered by SMSCLOTHES
+                                <script>document.write(new Date().getFullYear())</script> &copy; Powered by clothesforgift
                             </div>
 
                         </div>

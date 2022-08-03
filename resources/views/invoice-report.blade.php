@@ -26,7 +26,7 @@
                         <div class="auth-logo">
                             <div class="logo logo-dark">
                                 <span class="logo-lg">
-                                    <h3>SMSCLOTHES</h3>
+                                    <h3>clothesforgift</h3>
 
                                 </span>
                             </div>
