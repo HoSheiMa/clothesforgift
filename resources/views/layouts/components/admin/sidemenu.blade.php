@@ -171,7 +171,7 @@
                 <li>
                     <a href="/add-withdraw">طلب سحب</a>
                 </li>
-                @if (is('admin', 'support'))
+                @if (is('admin'))
                 <li>
                     <a href="/withdraw?filter=pending">طلبات السحب المعلقة</a>
                 </li>
