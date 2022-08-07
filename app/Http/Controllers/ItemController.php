@@ -82,6 +82,10 @@ class ItemController extends Controller
         $item->refresh();
         // reset the benefits
         $order = Order::find($item->order_id);
+        if (
+            $order->status === "delivered" ||
+            $order->status === "cancelled"
+        ) return;
         // Refund
         OrderController::payBenefit($request, $order, 0);
 
@@ -132,6 +136,10 @@ class ItemController extends Controller
     {
         $role = Auth::user()->role;
         $order = Order::find($item->order_id);
+         if (
+            $order->status === "delivered" ||
+            $order->status === "cancelled"
+        ) return;
         if ($role === "admin" || $role === "support" || (Auth::user()->id == $order->created_by && $order->status == "new"))  {
             $back_items_qauntity = $item->needed;
             $color = colors::find($item->color_id);
@@ -141,14 +149,20 @@ class ItemController extends Controller
                     "available" => +$color->available + $back_items_qauntity,
                 ]);
             }
+           
             if ($delete_item) {
-            $item->delete();
-            // delete the order if there no items
-            $items = $order->items;
-            if (sizeof($items) === 0) {
-                $order->delete();
+                $order->refresh();
+                OrderController::payBenefit($request, $order, 0);
+                $item->delete();
+                $order->refresh();
+                OrderController::payBenefit($request, $order, false, false);
+                // delete the order if there no items
+                $items = $order->items;
+                if (sizeof($items) === 0) {
+                    $order->delete();
+                }
             }
-        }
+        
         }
     }
 }

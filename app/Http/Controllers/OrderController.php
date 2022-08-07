@@ -277,7 +277,7 @@ class OrderController extends Controller
                         // ? not needed when item destroy the benefits removed also
                         $this->payBenefit($request, $order, 0);
                         foreach ($order->items as $_item) {
-                            ItemController::destroy($request, $_item, false);
+                            ItemController::destroy($request, $_item, false );
                         }
                     }
                 }
@@ -307,7 +307,7 @@ class OrderController extends Controller
             }
             if (
                 in_array($order->status, ["new", "cancelled"]) &&
-                Auth::user()->id == $order->created_by
+                Auth::user()->id == $order->created_by && !in_array($role,['admin', 'support'])
             ) {
                 if ($status == "cancelled") {
                     // ? not needed when item destroy the benefits removed also
