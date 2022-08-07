@@ -132,16 +132,18 @@
                                                 <tbody>
                                                     @foreach ($order->items as $item)
                                                     <tr>
-                                                        @if ((Auth::user()->id == $order->created_by && $order->status == "new") || Auth::user()->role == "admin" || Auth::user()->role == "support")
+                                                        
 
                                                         <th scope="row">{{($item->product_name) }}
+                                                            @if ((Auth::user()->id == $order->created_by && $order->status == "new") || Auth::user()->role == "admin" || Auth::user()->role == "support")
                                                             <a href="#"  onclick="remove(this, {{$item->id}});javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
 
-                                                            @if(App\Models\colors::find($item->color_id))
-                                                            <a href="#"  onclick="edit(this, {{$item->id}});javascript:void(0);" class="action-icon"> <i class="fas fa-pen  "></i></a>
+                                                                @if(App\Models\colors::find($item->color_id))
+                                                                <a href="#"  onclick="edit(this, {{$item->id}});javascript:void(0);" class="action-icon"> <i class="fas fa-pen  "></i></a>
+                                                                @endif
                                                             @endif
+
                                                         </th>
-                                                        @endif
                                                         <td><img src="{{($item->product_image)}}" alt="product-img" height="32"></td>
                                                         <td>{{$item->needed_price}}</td>
                                                         <td>{{$item->needed}}</td>
@@ -368,7 +370,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; Powered by clothesforgift
+                                <script>document.write(new Date().getFullYear())</script> &copy; Powered by SMSCLOTHES
                             </div>
 
                         </div>
