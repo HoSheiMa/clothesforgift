@@ -37,7 +37,7 @@
                     <div class="float-start">
                         <div class="auth-logo">
                             <div class="logo logo-dark">
-                                <span class="logo-lg">
+                                <span class="logo-lg" style="background-color: yellow">
                                     <h3>clothesforgift</h3>
 
                                 </span>
