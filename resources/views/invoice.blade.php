@@ -37,8 +37,11 @@
                     <div class="float-start">
                         <div class="auth-logo">
                             <div class="logo logo-dark">
-                                <span class="logo-lg" style="background-color: yellow">
-                                    <h3>clothesforgift</h3>
+                                <span class="logo-lg" style=" 
+                                text-align: center;
+                                display: block;
+                                width: 100vw;">
+                                    <h3 style=" background-color: yellow;display:inline">clothesforgift</h3>
 
                                 </span>
                             </div>
@@ -172,10 +175,10 @@
 @endforeach
 
 <script>
-    window.print()
-    window.onafterprint = () => {
-        window.close();
-    }
+    // window.print()
+    // window.onafterprint = () => {
+    //     window.close();
+    // }
 </script>
 
 </body>
