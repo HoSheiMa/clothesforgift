@@ -53,11 +53,11 @@ class Whatsapp extends Controller
     {
         switch ($type) {
             case "text":
-                return "https://api.ultramsg.com/instance4216/messages/chat";
+                return "https://api.ultramsg.com/instance16451/messages/chat";
             case "image":
-                return "https://api.ultramsg.com/instance4216/messages/image";
+                return "https://api.ultramsg.com/instance16451/messages/image";
             case "document":
-                return "https://api.ultramsg.com/instance4216/messages/document";
+                return "https://api.ultramsg.com/instance16451/messages/document";
         }
     }
     public function send_execute($args, $type)
@@ -68,7 +68,7 @@ class Whatsapp extends Controller
                 $this->endPoint($type),
                 array_merge(
                     [
-                        "token" => env("ultramsg", "hzxyv9578888bhof"),
+                        "token" => env("ultramsg", "4y51xpx1q2iivnkf"),
                         "to" => "+2$to", // +201234567890
                         "priority" => 1,
                         "referenceId" => "",
