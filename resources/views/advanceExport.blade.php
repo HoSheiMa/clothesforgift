@@ -115,6 +115,7 @@
                                                 "delivery" => "قيد التوصيل ",
                                                 "delivered" => "تم التسليم ",
                                                 "cancelled" => "ملغي ",
+                                                "unavailable" => "غير متاح"
                                         ];
                                    @endphp
                                     @foreach ($translateOrderStatus as $key => $status)
