@@ -100,9 +100,10 @@
                             "delivery" => "قيد التوصيل ",
                             "delivered" => "تم التسليم ",
                             "cancelled" => "ملغي ",
+                            "unavailable" => "غير متاح"
                     ];
                         if (Auth::user()->role != "Shippingcompany") {
-                            $orderStatus = ["new", "pending",'delay',"confirmed","prepared","delivery","delivered","cancelled"];
+                            $orderStatus = ["new", "pending",'delay',"confirmed","prepared","delivery","delivered","cancelled", "unavailable"];
 
 
                         } else {

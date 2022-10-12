@@ -251,6 +251,7 @@ class OrderController extends Controller
             "delivery",
             "delivered",
             "cancelled",
+            "unavailable",
         ];
 
         if (!in_array($status, $allowed_status)) {
@@ -273,7 +274,7 @@ class OrderController extends Controller
                     if ($status == "delivered") {
                         $this->payBenefit($request, $order, 1);
                     }
-                    if ($status == "cancelled") {
+                    if ($status == "cancelled" || $status == "unavailable") {
                         // ? not needed when item destroy the benefits removed also
                         $this->payBenefit($request, $order, 0);
                         foreach ($order->items as $_item) {
@@ -293,7 +294,7 @@ class OrderController extends Controller
                 if ($status == "delivered") {
                     $this->payBenefit($request, $order, 1);
                 }
-                if ($status == "cancelled") {
+                if ($status == "cancelled" || $status == "unavailable") {
                     // ? not needed when item destroy the benefits removed also
                     $this->payBenefit($request, $order, 0);
                     foreach ($order->items as $_item) {
@@ -309,7 +310,7 @@ class OrderController extends Controller
                 in_array($order->status, ["new", "cancelled"]) &&
                 Auth::user()->id == $order->created_by && !in_array($role,['admin', 'support'])
             ) {
-                if ($status == "cancelled") {
+                if ($status == "cancelled" || $status == "unavailable") {
                     // ? not needed when item destroy the benefits removed also
                     $this->payBenefit($request, $order, 0);
                     foreach ($order->items as $_item) {
@@ -631,6 +632,7 @@ class OrderController extends Controller
                     "delivery",
                     "delivered",
                     "cancelled",
+                    "unavailable"
                 ]
                 : [$request->filter];
         $orders = [];

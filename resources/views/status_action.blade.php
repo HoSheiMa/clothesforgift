@@ -33,6 +33,7 @@
                             "prepared" =>"تم التجهيز",
                             "delivery" => "قيد التوصيل ",
                             "delivered" => "تم التسليم ",
+                            "unavailable" => "غير متاح",
                             "cancelled" => "ملغي ",
                     ];
                                 @endphp

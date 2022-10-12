@@ -113,6 +113,10 @@ window.onload = async () => {
                             color = "bg-soft-success text-success";
                             text = "مؤجل ";
                             break;
+                        case "unavailable":
+                            color = "bg-soft-success text-danger";
+                            text = "غير متاح";
+                            break;
                         case "prepared":
                             color = "bg-soft-info text-info";
                             text = "تم التجهيز ";
@@ -161,6 +165,7 @@ window.onload = async () => {
                             color = "bg-soft-success text-success";
                             text = "تم التسليم ";
                             break;
+
                         case "Partially delivered":
                             color = "bg-soft-warning text-warning";
                             text = "مسلم جزئي ";
@@ -400,6 +405,8 @@ window.onload = async () => {
                             new: "جديد",
                             pending: "معلق",
                             confirmed: "مؤكد",
+                            delay: "مؤجل",
+                            unavailable: "غير متاح ",
                             prepared: "تم التجهيز ",
                             delivery: "قيد التوصيل",
                             delivered: "تم التسليم ",
@@ -679,14 +686,15 @@ updateStatus = async (
                               cancelled: "ملغي ",
                           }
                         : {
-                              new: "جديد",
-                              pending: "معلق",
-                              confirmed: "مؤكد",
-                              delay: "مؤجل",
-                              prepared: "تم التجهيز ",
-                              delivery: "قيد التوصيل",
-                              delivered: "تم التسليم ",
-                              cancelled: "ملغي ",
+                            new: "جديد",
+                            pending: "معلق",
+                            confirmed: "مؤكد",
+                            delay: "مؤجل",
+                            unavailable: "غير متاح ",
+                            prepared: "تم التجهيز ",
+                            delivery: "قيد التوصيل",
+                            delivered: "تم التسليم ",
+                            cancelled: "ملغي ",
                           },
                 inputPlaceholder: "اختر الحالة الجديدة",
                 showCancelButton: true,
